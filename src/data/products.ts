@@ -16,7 +16,7 @@ export const products: Product[] = [
   // Batteries
   {
     id: 'bat-001',
-    name: 'RahimaPower Gold Battery',
+    name: 'Rahimafrooz Gold Battery',
     category: 'battery',
     description: 'Premium battery with extended lifespan and superior performance. Ideal for modern vehicles with high electrical demands.',
     price: 12500,
@@ -29,7 +29,7 @@ export const products: Product[] = [
   },
   {
     id: 'bat-002',
-    name: 'RahimaPower Silver Battery',
+    name: 'Rahimafrooz Silver Battery',
     category: 'battery',
     description: 'Reliable performance battery for everyday use. Balanced power output and dependability.',
     price: 9800,
@@ -42,7 +42,7 @@ export const products: Product[] = [
   },
   {
     id: 'bat-003',
-    name: 'RahimaPower Heavy Duty Battery',
+    name: 'Rahimafrooz Heavy Duty Battery',
     category: 'battery',
     description: 'Designed for commercial vehicles and heavy-duty applications. Maximum durability in challenging conditions.',
     price: 18500,
@@ -57,7 +57,7 @@ export const products: Product[] = [
   // Tires
   {
     id: 'tire-001',
-    name: 'RahimaTread All-Season Tires',
+    name: 'Rahimafrooz All-Season Tires',
     category: 'tires',
     description: 'Versatile tires for year-round performance in city and highway driving conditions.',
     price: 8500,
@@ -70,7 +70,7 @@ export const products: Product[] = [
   },
   {
     id: 'tire-002',
-    name: 'RahimaTread Premium Sport Tires',
+    name: 'Rahimafrooz Premium Sport Tires',
     category: 'tires',
     description: 'Performance tires designed for enhanced grip and handling on dry and wet roads.',
     price: 12800,
@@ -83,7 +83,7 @@ export const products: Product[] = [
   },
   {
     id: 'tire-003',
-    name: 'RahimaTread SUV All-Terrain Tires',
+    name: 'Rahimafrooz SUV All-Terrain Tires',
     category: 'tires',
     description: 'Durable tires for SUVs and crossovers, providing excellent traction on various terrains.',
     price: 15500,
@@ -98,7 +98,7 @@ export const products: Product[] = [
   // Lubricants
   {
     id: 'lub-001',
-    name: 'RahimaLube Synthetic Engine Oil',
+    name: 'Rahimafrooz Synthetic Engine Oil',
     category: 'lubricants',
     description: 'Full synthetic oil delivering superior engine protection and improved fuel efficiency.',
     price: 3500,
@@ -111,7 +111,7 @@ export const products: Product[] = [
   },
   {
     id: 'lub-002',
-    name: 'RahimaLube Semi-Synthetic Oil',
+    name: 'Rahimafrooz Semi-Synthetic Oil',
     category: 'lubricants',
     description: 'Balanced formula providing good protection at an affordable price point.',
     price: 2200,
@@ -124,7 +124,7 @@ export const products: Product[] = [
   },
   {
     id: 'lub-003',
-    name: 'RahimaLube Transmission Fluid',
+    name: 'Rahimafrooz Transmission Fluid',
     category: 'lubricants',
     description: 'Specialized fluid for automatic transmissions, ensuring smooth gear shifts and component protection.',
     price: 2800,
@@ -139,7 +139,7 @@ export const products: Product[] = [
   // Lights
   {
     id: 'light-001',
-    name: 'RahimaBeam LED Headlights',
+    name: 'Rahimafrooz LED Headlights',
     category: 'lights',
     description: 'Bright, energy-efficient LED headlights providing better visibility and modern appearance.',
     price: 5500,
@@ -152,7 +152,7 @@ export const products: Product[] = [
   },
   {
     id: 'light-002',
-    name: 'RahimaBeam Fog Lights',
+    name: 'Rahimafrooz Fog Lights',
     category: 'lights',
     description: 'Specialized fog lights for improved visibility in adverse weather conditions.',
     price: 3200,
@@ -165,7 +165,7 @@ export const products: Product[] = [
   },
   {
     id: 'light-003',
-    name: 'RahimaBeam Interior LED Kit',
+    name: 'Rahimafrooz Interior LED Kit',
     category: 'lights',
     description: 'Complete LED upgrade kit for interior lighting, including dome lights, map lights, and trunk light.',
     price: 2500,
@@ -180,7 +180,7 @@ export const products: Product[] = [
   // Electronics
   {
     id: 'elec-001',
-    name: 'RahimaTech Dash Cam',
+    name: 'Rahimafrooz Dash Cam',
     category: 'electronics',
     description: 'High-definition dash camera with night vision and motion detection for continuous recording and driving security.',
     price: 7800,
@@ -193,7 +193,7 @@ export const products: Product[] = [
   },
   {
     id: 'elec-002',
-    name: 'RahimaTech Parking Sensors',
+    name: 'Rahimafrooz Parking Sensors',
     category: 'electronics',
     description: 'Reliable parking sensor system with audible alerts to prevent collisions while parking.',
     price: 5500,
@@ -206,7 +206,7 @@ export const products: Product[] = [
   },
   {
     id: 'elec-003',
-    name: 'RahimaTech Bluetooth Car Kit',
+    name: 'Rahimafrooz Bluetooth Car Kit',
     category: 'electronics',
     description: 'Hands-free calling and music streaming solution for vehicles without built-in Bluetooth.',
     price: 3200,

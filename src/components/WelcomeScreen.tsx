@@ -10,12 +10,12 @@ const WelcomeScreen: React.FC = () => {
 
   const translations = {
     welcome: {
-      en: 'Welcome to Rahimafrooz Car Accessory Finder',
-      bn: 'রহিমাফরোজ গাড়ি এক্সেসরি ফাইন্ডারে আপনাকে স্বাগতম'
+      en: 'Welcome to AutoFind',
+      bn: 'অটোফাইন্ডে আপনাকে স্বাগতম'
     },
     subtitle: {
-      en: 'Find the perfect accessories for your vehicle',
-      bn: 'আপনার গাড়ির জন্য উপযুক্ত এক্সেসরিজ খুঁজুন'
+      en: 'Rahimafrooz Car Parts & Accessories Finder',
+      bn: 'রহিমাফরোজ গাড়ি পার্টস ও এক্সেসরিজ ফাইন্ডার'
     },
     instruction: {
       en: 'Select your language to continue',
