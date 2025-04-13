@@ -15,6 +15,7 @@ const VehicleSelector: React.FC = () => {
   const [year, setYear] = useState<number | null>(null);
   const [availableModels, setAvailableModels] = useState<string[]>([]);
   const [isFormValid, setIsFormValid] = useState(false);
+  const [filteredPopularVehicles, setFilteredPopularVehicles] = useState(popularVehicles);
 
   const translations = {
     title: {
@@ -36,6 +37,14 @@ const VehicleSelector: React.FC = () => {
     popular: {
       en: 'Popular Vehicles',
       bn: 'জনপ্রিয় গাড়ি'
+    },
+    allPopular: {
+      en: 'All Popular Vehicles',
+      bn: 'সকল জনপ্রিয় গাড়ি'
+    },
+    filterPopular: {
+      en: 'Popular ${make} Vehicles',
+      bn: 'জনপ্রিয় ${make} গাড়ি'
     },
     selectMake: {
       en: 'Select make',
@@ -61,8 +70,18 @@ const VehicleSelector: React.FC = () => {
       setAvailableModels(carModels[make]);
       setModel(''); // Reset model when make changes
       setYear(null); // Reset year when make changes
+      
+      // Filter popular vehicles based on selected make
+      if (make) {
+        const filtered = popularVehicles.filter(vehicle => vehicle.make === make);
+        setFilteredPopularVehicles(filtered);
+      } else {
+        setFilteredPopularVehicles(popularVehicles);
+      }
     } else {
       setAvailableModels([]);
+      // Reset filtered popular vehicles to show all when no make is selected
+      setFilteredPopularVehicles(popularVehicles);
     }
   }, [make]);
 
@@ -93,6 +112,14 @@ const VehicleSelector: React.FC = () => {
       setCurrentStep('products');
     }
   };
+
+  // Function to get the appropriate popular vehicles heading
+  const getPopularHeading = () => {
+    if (make) {
+      return translations.filterPopular[language].replace('${make}', make);
+    }
+    return translations.allPopular[language];
+  }
 
   return (
     <div className="container mx-auto px-4 py-8 animate-fade-in">
@@ -178,11 +205,11 @@ const VehicleSelector: React.FC = () => {
 
         <div>
           <h2 className="text-xl font-semibold mb-4">
-            {translations.popular[language]}
+            {getPopularHeading()}
           </h2>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {popularVehicles.slice(0, 8).map((vehicle, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[500px] overflow-y-auto pr-2">
+            {filteredPopularVehicles.map((vehicle, index) => (
               <Card 
                 key={`${vehicle.make}-${vehicle.model}-${vehicle.year}-${index}`}
                 className="cursor-pointer hover:border-rahimafrooz-blue transition-colors"
@@ -201,6 +228,14 @@ const VehicleSelector: React.FC = () => {
                 </CardContent>
               </Card>
             ))}
+            
+            {filteredPopularVehicles.length === 0 && (
+              <div className="col-span-2 text-center py-8 text-gray-500">
+                {language === 'en' 
+                  ? `No popular ${make} vehicles found` 
+                  : `কোন জনপ্রিয় ${make} গাড়ি পাওয়া যায়নি`}
+              </div>
+            )}
           </div>
         </div>
       </div>
