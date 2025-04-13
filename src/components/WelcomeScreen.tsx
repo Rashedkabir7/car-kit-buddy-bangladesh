@@ -10,8 +10,8 @@ const WelcomeScreen: React.FC = () => {
 
   const translations = {
     welcome: {
-      en: 'Welcome to AutoFind',
-      bn: 'অটোফাইন্ডে আপনাকে স্বাগতম'
+      en: 'Welcome to RahimFinder',
+      bn: 'রহিমফাইন্ডারে আপনাকে স্বাগতম'
     },
     subtitle: {
       en: 'Rahimafrooz Car Parts & Accessories Finder',

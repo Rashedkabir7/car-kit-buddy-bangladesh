@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useKiosk } from '../context/KioskContext';
 import { Button } from '@/components/ui/button';
@@ -64,14 +63,29 @@ const VehicleSelector: React.FC = () => {
     }
   };
 
-  // Update available models when make changes
+  const vehicleImages: {[key: string]: string} = {
+    'Toyota': 'https://images.unsplash.com/photo-1559416523-140ddc3d238c?w=400&auto=format&fit=crop',
+    'Honda': 'https://images.unsplash.com/photo-1600661653561-629509413bfd?w=400&auto=format&fit=crop',
+    'Mitsubishi': 'https://images.unsplash.com/photo-1583267746897-2cf415887172?w=400&auto=format&fit=crop',
+    'Nissan': 'https://images.unsplash.com/photo-1550841503-60feb104da1c?w=400&auto=format&fit=crop',
+    'Hyundai': 'https://images.unsplash.com/photo-1607853827120-f9759a6f529f?w=400&auto=format&fit=crop',
+    'Kia': 'https://images.unsplash.com/photo-1652762890470-a66bbab748b2?w=400&auto=format&fit=crop',
+    'Suzuki': 'https://images.unsplash.com/photo-1545974452-caa213f76132?w=400&auto=format&fit=crop',
+    'Mercedes-Benz': 'https://images.unsplash.com/photo-1629897048514-3dd7414efc45?w=400&auto=format&fit=crop',
+    'BMW': 'https://images.unsplash.com/photo-1556800572-1b8aeef2c54f?w=400&auto=format&fit=crop',
+    'Audi': 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=400&auto=format&fit=crop'
+  };
+
+  const getVehicleImage = (make: string) => {
+    return vehicleImages[make] || 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&auto=format&fit=crop'; // Default image
+  };
+
   useEffect(() => {
     if (make && carModels[make]) {
       setAvailableModels(carModels[make]);
-      setModel(''); // Reset model when make changes
-      setYear(null); // Reset year when make changes
+      setModel('');
+      setYear(null);
       
-      // Filter popular vehicles based on selected make
       if (make) {
         const filtered = popularVehicles.filter(vehicle => vehicle.make === make);
         setFilteredPopularVehicles(filtered);
@@ -80,20 +94,16 @@ const VehicleSelector: React.FC = () => {
       }
     } else {
       setAvailableModels([]);
-      // Reset filtered popular vehicles to show all when no make is selected
       setFilteredPopularVehicles(popularVehicles);
     }
   }, [make]);
 
-  // Check if form is valid
   useEffect(() => {
     setIsFormValid(!!make && !!model && !!year);
   }, [make, model, year]);
 
   const handlePopularVehicleSelect = (vehicle: typeof popularVehicles[0]) => {
     setMake(vehicle.make);
-    
-    // Need to wait for availableModels to update after setting make
     setTimeout(() => {
       setModel(vehicle.model);
       setYear(vehicle.year);
@@ -104,16 +114,12 @@ const VehicleSelector: React.FC = () => {
     if (isFormValid) {
       const vehicle = { make, model, year: year as number };
       setSelectedVehicle(vehicle);
-      
-      // Get compatible products and set them in context
       const compatibleProducts = getCompatibleProducts(vehicle);
       setFilteredProducts(compatibleProducts);
-      
       setCurrentStep('products');
     }
   };
 
-  // Function to get the appropriate popular vehicles heading
   const getPopularHeading = () => {
     if (make) {
       return translations.filterPopular[language].replace('${make}', make);
@@ -212,19 +218,19 @@ const VehicleSelector: React.FC = () => {
             {filteredPopularVehicles.map((vehicle, index) => (
               <Card 
                 key={`${vehicle.make}-${vehicle.model}-${vehicle.year}-${index}`}
-                className="cursor-pointer hover:border-rahimafrooz-blue transition-colors"
+                className="cursor-pointer hover:border-rahimafrooz-blue transition-colors overflow-hidden"
                 onClick={() => handlePopularVehicleSelect(vehicle)}
               >
-                <CardContent className="p-4 flex items-center space-x-3">
-                  {index % 2 === 0 ? (
-                    <Car className="text-rahimafrooz-blue" />
-                  ) : (
-                    <CarFront className="text-rahimafrooz-blue" />
-                  )}
-                  <div>
-                    <p className="font-medium">{vehicle.make} {vehicle.model}</p>
-                    <p className="text-sm text-gray-500">{vehicle.year}</p>
-                  </div>
+                <div className="h-32 bg-gray-100 overflow-hidden">
+                  <img 
+                    src={getVehicleImage(vehicle.make)} 
+                    alt={`${vehicle.make} ${vehicle.model}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardContent className="p-4">
+                  <p className="font-medium">{vehicle.make} {vehicle.model}</p>
+                  <p className="text-sm text-gray-500">{vehicle.year}</p>
                 </CardContent>
               </Card>
             ))}

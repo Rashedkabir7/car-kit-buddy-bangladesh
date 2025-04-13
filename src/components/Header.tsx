@@ -12,8 +12,8 @@ const Header: React.FC = () => {
 
   const translations = {
     title: {
-      en: 'AutoFind',
-      bn: 'অটোফাইন্ড'
+      en: 'RahimFinder',
+      bn: 'রহিমফাইন্ডার'
     },
     step: {
       en: 'Step',
