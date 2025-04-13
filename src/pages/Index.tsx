@@ -1,13 +1,40 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import React from 'react';
+import { KioskProvider } from '../context/KioskContext';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import WelcomeScreen from '../components/WelcomeScreen';
+import VehicleSelector from '../components/VehicleSelector';
+import ProductList from '../components/ProductList';
+import ProductDetail from '../components/ProductDetail';
+import ContactOptions from '../components/ContactOptions';
+import { useKiosk } from '../context/KioskContext';
+
+// Internal component that uses the context
+const KioskContent: React.FC = () => {
+  const { currentStep } = useKiosk();
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow">
+        {currentStep === 'welcome' && <WelcomeScreen />}
+        {currentStep === 'vehicle' && <VehicleSelector />}
+        {currentStep === 'products' && <ProductList />}
+        {currentStep === 'details' && <ProductDetail />}
+        {currentStep === 'contact' && <ContactOptions />}
+      </main>
+      <Footer />
     </div>
+  );
+};
+
+// Wrapper component that provides the context
+const Index: React.FC = () => {
+  return (
+    <KioskProvider>
+      <KioskContent />
+    </KioskProvider>
   );
 };
 
